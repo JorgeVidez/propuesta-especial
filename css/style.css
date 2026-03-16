@@ -1,0 +1,793 @@
+/* =============================================
+   PROPUESTA ROMÁNTICA — ESTILOS PRINCIPALES
+   ============================================= */
+
+/* ---- RESET & BASE ---- */
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  font-size: 16px;
+}
+
+body {
+  font-family: 'Poppins', sans-serif;
+  color: #4a3040;
+  overflow-x: hidden;
+  background: linear-gradient(135deg, #ff9a9e 0%, #fecfef 50%, #fdfcfb 100%);
+  background-attachment: fixed;
+  min-height: 100vh;
+}
+
+.script-font {
+  font-family: 'Dancing Script', cursive;
+}
+
+.hidden {
+  display: none !important;
+}
+
+.container {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+/* ---- ANIMATED GRADIENT BACKGROUND ---- */
+@keyframes gradientShift {
+  0% {
+    background-position: 0% 50%;
+  }
+
+  50% {
+    background-position: 100% 50%;
+  }
+
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+body::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(270deg, #ff9a9e, #fecfef, #fbc2eb, #f6d5f7, #ff9a9e);
+  background-size: 600% 600%;
+  animation: gradientShift 18s ease infinite;
+  z-index: -1;
+}
+
+/* =============================================
+   PANTALLA DE INICIO
+   ============================================= */
+.intro-screen {
+  position: fixed;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  background: linear-gradient(135deg, #ff9a9e, #fecfef);
+  transition: opacity 0.8s ease, visibility 0.8s ease;
+}
+
+.intro-screen.fade-out {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+.intro-content {
+  text-align: center;
+  animation: floatIn 1.2s ease-out;
+}
+
+@keyframes floatIn {
+  from {
+    opacity: 0;
+    transform: translateY(40px) scale(0.95);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.intro-title {
+  font-family: 'Dancing Script', cursive;
+  font-size: clamp(2.4rem, 7vw, 4.5rem);
+  color: #fff;
+  text-shadow: 0 4px 20px rgba(180, 60, 80, 0.35);
+  margin-bottom: 12px;
+}
+
+.intro-subtitle {
+  font-size: clamp(1rem, 2.5vw, 1.25rem);
+  color: rgba(255, 255, 255, 0.9);
+  margin-bottom: 32px;
+  font-weight: 300;
+}
+
+.btn-start {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 3.5rem;
+  animation: heartbeat 1.2s ease-in-out infinite;
+  filter: drop-shadow(0 4px 12px rgba(255, 80, 100, 0.5));
+  transition: transform 0.3s;
+}
+
+.btn-start:hover {
+  transform: scale(1.2);
+}
+
+/* Floating hearts bg */
+.floating-hearts {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.floating-heart {
+  position: absolute;
+  font-size: 1.4rem;
+  opacity: 0;
+  animation: floatUp linear forwards;
+}
+
+@keyframes floatUp {
+  0% {
+    opacity: 0;
+    transform: translateY(0) rotate(0deg);
+  }
+
+  10% {
+    opacity: 0.8;
+  }
+
+  90% {
+    opacity: 0.3;
+  }
+
+  100% {
+    opacity: 0;
+    transform: translateY(-100vh) rotate(360deg);
+  }
+}
+
+/* =============================================
+   SECCIONES COMUNES
+   ============================================= */
+.section {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 80px 0;
+  position: relative;
+  width: 100%;
+}
+
+.section-title {
+  font-size: clamp(2rem, 6vw, 3.5rem);
+  text-align: center;
+  margin-bottom: 8px;
+  color: #c0395e;
+  text-shadow: 0 2px 8px rgba(192, 57, 94, 0.15);
+}
+
+.section-subtitle {
+  text-align: center;
+  font-size: clamp(0.9rem, 2.5vw, 1.15rem);
+  color: #8c5070;
+  margin-bottom: clamp(30px, 5vw, 48px);
+  padding: 0 15px;
+  font-weight: 300;
+}
+
+/* =============================================
+   SECCIÓN 1: RAZONES
+   ============================================= */
+.razones-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+.razon-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 20px;
+  background: rgba(255, 255, 255, 0.55);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.6);
+  border-radius: 20px;
+  padding: clamp(15px, 4vw, 24px) clamp(20px, 5vw, 28px);
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 0.7s ease, transform 0.7s ease, box-shadow 0.3s ease;
+  box-shadow: 0 4px 24px rgba(192, 57, 94, 0.08);
+}
+
+.razon-item.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.razon-item:hover {
+  box-shadow: 0 8px 36px rgba(192, 57, 94, 0.18);
+}
+
+.razon-number {
+  flex-shrink: 0;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #ff6b8a, #ff9a9e);
+  color: #fff;
+  font-weight: 700;
+  font-size: 1.15rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 3px 12px rgba(255, 107, 138, 0.35);
+}
+
+.razon-content h3 {
+  font-size: 1.15rem;
+  font-weight: 600;
+  color: #b83a5e;
+  margin-bottom: 4px;
+}
+
+.razon-content p {
+  font-size: 0.95rem;
+  color: #7a4560;
+  line-height: 1.55;
+  font-weight: 300;
+}
+
+/* =============================================
+   SECCIÓN 2: CINE
+   ============================================= */
+.section-cine {
+  background: rgba(255, 255, 255, 0.15);
+}
+
+.cine-carousel {
+  position: relative;
+  width: 100%;
+  overflow-x: auto;
+  overflow-y: hidden;
+  padding: 20px 0;
+  margin: 20px 0;
+  cursor: grab;
+  /* Mask to fade edges */
+  mask-image: linear-gradient(to right, transparent, black 15%, black 85%, transparent);
+  -webkit-mask-image: linear-gradient(to right, transparent, black 15%, black 85%, transparent);
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  display: flex;
+  justify-content: flex-start;
+}
+
+.cine-carousel::-webkit-scrollbar {
+  display: none;
+}
+
+.cine-track {
+  display: flex;
+  gap: clamp(20px, 4vw, 40px);
+  padding: 0 40px;
+  width: max-content;
+  animation: scrollCine 35s linear infinite;
+  will-change: transform;
+}
+
+.cine-track:hover {
+  animation-play-state: paused;
+}
+
+@keyframes scrollCine {
+  0% {
+    transform: translateX(0);
+  }
+
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.cine-card {
+  flex-shrink: 0;
+  width: 220px;
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.6);
+  border-radius: 20px;
+  padding: 28px 20px;
+  text-align: center;
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+  box-shadow: 0 4px 20px rgba(192, 57, 94, 0.08);
+}
+
+.cine-poster {
+  width: 100%;
+  aspect-ratio: 2/3;
+  margin-bottom: 0px;
+  line-height: 0;
+  border-radius: 12px;
+  overflow: hidden;
+  background: #eee;
+}
+
+.cine-poster img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+.cine-card:hover .cine-poster img {
+  transform: scale(1.1);
+}
+
+.cine-card {
+  flex-shrink: 0;
+  width: clamp(180px, 40vw, 240px);
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.6);
+  border-radius: 20px;
+  padding: 12px;
+  text-align: center;
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+  box-shadow: 0 4px 20px rgba(192, 57, 94, 0.08);
+}
+
+.cine-card p {
+  font-size: 0.85rem;
+  color: #9a5a75;
+  font-style: italic;
+  font-weight: 300;
+}
+
+.cine-more {
+  text-align: center;
+  font-size: clamp(1.6rem, 4vw, 2.4rem);
+  color: #c0395e;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+  margin-top: 20px;
+}
+
+.cine-more.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* =============================================
+   SECCIÓN 3: GALERÍA POLAROID
+   ============================================= */
+.galeria-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 32px;
+  margin-bottom: 48px;
+}
+
+.polaroid {
+  background: #fff;
+  padding: 14px 14px 0 14px;
+  border-radius: 6px;
+  box-shadow: 0 6px 28px rgba(100, 40, 60, 0.12);
+  transition: transform 0.5s cubic-bezier(0.25, 0.8, 0.25, 1),
+    box-shadow 0.5s ease;
+  cursor: pointer;
+  opacity: 0;
+  transform: translateY(30px) rotate(0deg);
+  transition: opacity 0.6s ease, transform 0.6s ease, box-shadow 0.5s ease;
+}
+
+.polaroid.visible {
+  opacity: 1;
+  transform: translateY(0) rotate(0deg);
+}
+
+.polaroid:nth-child(odd).visible {
+  transform: translateY(0) rotate(-2deg);
+}
+
+.polaroid:nth-child(even).visible {
+  transform: translateY(0) rotate(2deg);
+}
+
+.polaroid:hover {
+  transform: scale(1.08) rotate(0deg) !important;
+  box-shadow: 0 16px 48px rgba(192, 57, 94, 0.25);
+  z-index: 10;
+}
+
+.polaroid-img {
+  width: 100%;
+  aspect-ratio: 1;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  position: relative;
+}
+
+.placeholder-bg {
+  background: linear-gradient(135deg, #fbc2eb 0%, #a6c1ee 100%);
+}
+
+.polaroid-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.placeholder-icon {
+  font-size: 3rem;
+  opacity: 0.5;
+  position: absolute;
+  z-index: 1;
+}
+
+.polaroid-caption {
+  text-align: center;
+  padding: 14px 4px 16px;
+  font-family: 'Dancing Script', cursive;
+  font-size: 1.15rem;
+  color: #7a4560;
+}
+
+.galeria-more {
+  text-align: center;
+  font-size: clamp(1.4rem, 4vw, 2.2rem);
+  color: #c0395e;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.galeria-more.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* =============================================
+   SECCIÓN 4: LA PROPUESTA
+   ============================================= */
+.section-propuesta {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.propuesta-box {
+  background: rgba(255, 255, 255, 0.6);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  border-radius: 30px;
+  padding: 60px 48px;
+  max-width: 540px;
+  width: 100%;
+  box-shadow: 0 12px 50px rgba(192, 57, 94, 0.15);
+  opacity: 0;
+  transform: scale(0.9);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.propuesta-box.visible {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.propuesta-title {
+  font-size: clamp(2rem, 5vw, 3rem);
+  color: #c0395e;
+  margin-bottom: 16px;
+}
+
+.propuesta-question {
+  font-size: clamp(1.3rem, 4vw, 2.2rem);
+  color: #8c3a5e;
+  margin-bottom: clamp(30px, 8vw, 40px);
+  font-weight: 600;
+  line-height: 1.3;
+}
+
+.propuesta-buttons {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 24px;
+  position: relative;
+  min-height: 200px;
+  width: 100%;
+}
+
+.btn {
+  border: none;
+  border-radius: 60px;
+  padding: clamp(12px, 3vw, 16px) clamp(30px, 6vw, 44px);
+  font-family: 'Poppins', sans-serif;
+  font-size: 1.2rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
+  letter-spacing: 0.5px;
+}
+
+.btn-si {
+  background: linear-gradient(135deg, #ff6b8a, #ff4971);
+  color: #fff;
+  box-shadow: 0 6px 24px rgba(255, 73, 113, 0.4);
+  animation: heartbeat 1.3s ease-in-out infinite;
+  z-index: 5;
+  white-space: nowrap;
+  max-width: 90vw;
+  display: inline-block;
+}
+
+@keyframes heartbeat {
+  0% {
+    transform: scale(var(--si-scale, 1));
+  }
+
+  14% {
+    transform: scale(calc(var(--si-scale, 1) * 1.1));
+  }
+
+  28% {
+    transform: scale(var(--si-scale, 1));
+  }
+
+  42% {
+    transform: scale(calc(var(--si-scale, 1) * 1.08));
+  }
+
+  56% {
+    transform: scale(var(--si-scale, 1));
+  }
+
+  100% {
+    transform: scale(var(--si-scale, 1));
+  }
+}
+
+.btn-si:hover {
+  box-shadow: 0 8px 32px rgba(255, 73, 113, 0.55);
+}
+
+.btn-no {
+  background: rgba(180, 160, 170, 0.25);
+  color: #9a7a8a;
+  backdrop-filter: blur(6px);
+  border: 1px solid rgba(180, 160, 170, 0.3);
+  position: relative;
+}
+
+.btn-no:hover {
+  background: rgba(180, 160, 170, 0.35);
+}
+
+/* =============================================
+   ÉXITO
+   ============================================= */
+.section-exito {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  background: transparent;
+}
+
+.exito-content {
+  animation: floatIn 1s ease-out;
+}
+
+.exito-title {
+  font-size: clamp(2.2rem, 6vw, 4rem);
+  color: #c0395e;
+  margin-bottom: 16px;
+  text-shadow: 0 3px 12px rgba(192, 57, 94, 0.2);
+}
+
+.exito-text {
+  font-size: clamp(1rem, 2.5vw, 1.3rem);
+  color: #8c5070;
+  margin-bottom: 32px;
+  font-weight: 300;
+}
+
+.exito-heart {
+  font-size: 5rem;
+  animation: heartbeat 1.3s ease-in-out infinite;
+  --si-scale: 1;
+  margin-bottom: 32px;
+}
+
+.exito-footer {
+  font-size: clamp(1.6rem, 4vw, 2.4rem);
+  color: #d44a6a;
+}
+
+/* =============================================
+   CONTROL DE MÚSICA
+   ============================================= */
+.music-toggle {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  border: none;
+  background: rgba(255, 255, 255, 0.6);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  font-size: 1.4rem;
+  cursor: pointer;
+  box-shadow: 0 4px 16px rgba(192, 57, 94, 0.15);
+  z-index: 999;
+  transition: transform 0.3s, background 0.3s;
+}
+
+.music-toggle:hover {
+  transform: scale(1.1);
+  background: rgba(255, 255, 255, 0.85);
+}
+
+.music-toggle.playing {
+  animation: pulse 2s ease-in-out infinite;
+}
+
+@keyframes pulse {
+
+  0%,
+  100% {
+    box-shadow: 0 4px 16px rgba(192, 57, 94, 0.15);
+  }
+
+  50% {
+    box-shadow: 0 4px 24px rgba(255, 73, 113, 0.4);
+  }
+}
+
+/* =============================================
+   RESPONSIVE
+   ============================================= */
+@media (max-width: 768px) {
+  .section-title {
+    font-size: clamp(1.8rem, 8vw, 2.8rem);
+    padding: 0 10px;
+    width: 100%;
+    text-align: center;
+  }
+
+  .section-subtitle {
+    font-size: 0.95rem;
+    padding: 0 20px;
+    margin-bottom: 30px;
+    text-align: center;
+  }
+
+  .razon-item {
+    padding: 18px 20px;
+    gap: 14px;
+  }
+
+  .razon-number {
+    width: 36px;
+    height: 36px;
+    font-size: 1rem;
+  }
+
+  .cine-card {
+    width: 180px;
+    padding: 20px 16px;
+  }
+
+  .galeria-grid {
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    gap: 20px;
+  }
+
+  .propuesta-box {
+    padding: 40px 24px;
+    margin: 0 16px;
+  }
+
+  .propuesta-buttons {
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .btn {
+    padding: 14px 36px;
+    font-size: 1.1rem;
+  }
+
+  .music-toggle {
+    bottom: 16px;
+    right: 16px;
+    width: 44px;
+    height: 44px;
+    font-size: 1.2rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .section {
+    padding: 40px 0;
+  }
+
+  .galeria-grid {
+    grid-template-columns: 1fr;
+    max-width: 280px;
+    margin-left: auto;
+    margin-right: auto;
+    gap: 25px;
+  }
+
+  .polaroid {
+    padding: 10px 10px 0 10px;
+  }
+
+  .polaroid-caption {
+    font-size: 1.1rem;
+    padding: 12px 2px 14px;
+  }
+
+  .propuesta-box {
+    padding: 35px 20px;
+  }
+}
+
+/* ---- Scrollbar personalizado ---- */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(255, 200, 210, 0.2);
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(192, 57, 94, 0.3);
+  border-radius: 20px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(192, 57, 94, 0.5);
+}

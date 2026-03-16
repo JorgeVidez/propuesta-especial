@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Propuesta Romántica 💕</title>
+  <meta name="description" content="Una propuesta romántica especial, creada con amor." />
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&family=Poppins:wght@300;400;600;700&display=swap"
+    rel="stylesheet" />
+
+  <!-- Canvas Confetti CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.3/dist/confetti.browser.min.js"></script>
+
+  <!-- Stylesheet -->
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+
+<body>
+
+  <!-- ============ PANTALLA DE INICIO ============ -->
+  <section id="intro" class="intro-screen">
+    <div class="intro-content">
+      <h1 class="intro-title">Tengo algo que decirte...</h1>
+      <p class="intro-subtitle">Presiona el corazón para comenzar 💌</p>
+      <button id="btn-start" class="btn-start" aria-label="Comenzar">
+        <span class="heart-icon">❤️</span>
+      </button>
+    </div>
+    <div class="floating-hearts" aria-hidden="true"></div>
+  </section>
+
+  <!-- ============ CONTENIDO PRINCIPAL ============ -->
+  <main id="main-content" class="hidden">
+
+    <!-- ---- SECCIÓN 1: RAZONES ---- -->
+    <section id="razones" class="section section-razones">
+      <div class="container">
+        <h2 class="section-title script-font">5 cosas que me gustan de vos</h2>
+        <p class="section-subtitle">Hay muchas más, pero aquí van las principales...</p>
+        <ol class="razones-list">
+          <li class="razon-item" data-delay="0">
+            <span class="razon-number">1</span>
+            <div class="razon-content">
+              <h3>Tu personalidad</h3>
+              <p>Aunque sos un poco enojona, me gusta cómo te expresas y tu forma de ser cuando estás conmigo. Me gusta
+                que seas genuina y que eso nunca cambie.</p>
+            </div>
+          </li>
+          <li class="razon-item" data-delay="100">
+            <span class="razon-number">2</span>
+            <div class="razon-content">
+              <h3>Tu inteligencia</h3>
+              <p>Sos una persona con un buen criterio y me gusta cómo pensas, ademas de ser bastante nerdsita con todos
+                los datos que sabes tanto de psicologia como de historia.</p>
+            </div>
+          </li>
+          <li class="razon-item" data-delay="200">
+            <span class="razon-number">3</span>
+            <div class="razon-content">
+              <h3>Nuestras charlas</h3>
+              <p>Siento que nuestras conversaciones no son vacías; siempre hay algo nuevo que aprendo cuando hablamos.
+                Por más que no tengas el mismo punto de vista, quiero saber qué opinás de algo porque me parecés una
+                persona muy criteriosa. Ojalá que nuestras charlas sobre diferentes temas nunca se acaben.</p>
+            </div>
+          </li>
+          <li class="razon-item" data-delay="300">
+            <span class="razon-number">4</span>
+            <div class="razon-content">
+              <h3>Ver peliculas con vos</h3>
+              <p>Como te había mencionado, no suelo ver películas muy seguido, pero cuando
+                estoy con vos me encanta la experiencia. No solo por ver buenas películas, sino también por disfrutar de
+                tu compañía.</p>
+            </div>
+          </li>
+          <li class="razon-item" data-delay="400">
+            <span class="razon-number">5</span>
+            <div class="razon-content">
+              <h3>Tu belleza </h3>
+              <p>Sé que es muy obvio decírtelo, pero en serio sos muy bella. Sin mentirte, sos la chica más bonita con
+                la que he estado.</p>
+            </div>
+          </li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- ---- SECCIÓN 2: CINE ---- -->
+    <section id="cine" class="section section-cine">
+      <div class="container">
+        <h2 class="section-title script-font">Nuestro Cine 🎬</h2>
+        <p class="section-subtitle">Todas las peliculas que hemos visto hasta ahora...</p>
+      </div>
+
+      <!-- Carrusel fuera del container para mejor responsividad -->
+      <div class="cine-carousel" id="cine-carousel">
+        <div class="cine-track">
+          <div class="cine-card">
+            <div class="cine-poster">
+              <img src="assets/img/movies/movie1.jpg" alt="Película 1"
+                onerror="if (this.src.endsWith('.jpg')) { this.src = this.src.replace('.jpg', '.jpeg'); } else if (this.src.endsWith('.jpeg')) { this.src = 'https://via.placeholder.com/200x300?text=Peli+1'; }">
+            </div>
+            <h3>Amelie</h3>
+            <p>"Me encanta ver"</p>
+          </div>
+          <div class="cine-card">
+            <div class="cine-poster">
+              <img src="assets/img/movies/movie2.jpg" alt="Película 2"
+                onerror="if (this.src.endsWith('.jpg')) { this.src = this.src.replace('.jpg', '.jpeg'); } else if (this.src.endsWith('.jpeg')) { this.src = 'https://via.placeholder.com/200x300?text=Peli+2'; }">
+            </div>
+            <h3>Drunk</h3>
+            <p>"Peliculas"</p>
+          </div>
+          <div class="cine-card">
+            <div class="cine-poster">
+              <img src="assets/img/movies/movie3.jpg" alt="Película 3"
+                onerror="if (this.src.endsWith('.jpg')) { this.src = this.src.replace('.jpg', '.jpeg'); } else if (this.src.endsWith('.jpeg')) { this.src = 'https://via.placeholder.com/200x300?text=Peli+3'; }">
+            </div>
+            <h3>The machinist</h3>
+            <p>"Con vos"</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="container">
+        <p class="cine-more script-font">Y muchas más por ver... 🍿</p>
+      </div>
+    </section>
+
+    <!-- ---- SECCIÓN 3: GALERÍA ---- -->
+    <section id="galeria" class="section section-galeria">
+      <div class="container">
+        <h2 class="section-title script-font">Nuestros Momentos 📸</h2>
+        <p class="section-subtitle">Hay que sacarnos más fotos, tenemos muy pocas!!!</p>
+        <div class="galeria-grid">
+          <div class="polaroid">
+            <div class="polaroid-img">
+              <img src="assets/img/foto1.jpg" alt="Foto 1"
+                onerror="if (this.src.endsWith('.jpg')) { this.src = this.src.replace('.jpg', '.jpeg'); } else if (this.src.endsWith('.jpeg')) { this.style.display='none'; this.parentElement.classList.add('placeholder-bg'); }">
+              <span class="placeholder-icon"></span>
+            </div>
+            <p class="polaroid-caption">Que bueno que pudiste ir a mi acto ❤️</p>
+          </div>
+          <div class="polaroid">
+            <div class="polaroid-img">
+              <img src="assets/img/foto2.jpg" alt="Foto 2"
+                onerror="if (this.src.endsWith('.jpg')) { this.src = this.src.replace('.jpg', '.jpeg'); } else if (this.src.endsWith('.jpeg')) { this.style.display='none'; this.parentElement.classList.add('placeholder-bg'); }">
+              <span class="placeholder-icon"></span>
+            </div>
+            <p class="polaroid-caption">Gracias por ir a mi defensa igual 🌅</p>
+          </div>
+          <div class="polaroid">
+            <div class="polaroid-img">
+              <img src="assets/img/foto3.jpg" alt="Foto 3"
+                onerror="if (this.src.endsWith('.jpg')) { this.src = this.src.replace('.jpg', '.jpeg'); } else if (this.src.endsWith('.jpeg')) { this.style.display='none'; this.parentElement.classList.add('placeholder-bg'); }">
+              <span class="placeholder-icon"></span>
+            </div>
+            <p class="polaroid-caption">Tan tierna poniendome bloqueador </p>
+          </div>
+          <div class="polaroid">
+            <div class="polaroid-img">
+              <img src="assets/img/foto4.jpg" alt="Foto 4"
+                onerror="if (this.src.endsWith('.jpg')) { this.src = this.src.replace('.jpg', '.jpeg'); } else if (this.src.endsWith('.jpeg')) { this.style.display='none'; this.parentElement.classList.add('placeholder-bg'); }">
+              <span class="placeholder-icon"></span>
+            </div>
+            <p class="polaroid-caption">En los columpios de Peji 🌎</p>
+          </div>
+          <div class="polaroid">
+            <div class="polaroid-img">
+              <img src="assets/img/foto5.jpg" alt="Foto 5"
+                onerror="if (this.src.endsWith('.jpg')) { this.src = this.src.replace('.jpg', '.jpeg'); } else if (this.src.endsWith('.jpeg')) { this.style.display='none'; this.parentElement.classList.add('placeholder-bg'); }">
+              <span class="placeholder-icon"></span>
+            </div>
+            <p class="polaroid-caption">El rompecabezas que no acabamos </p>
+          </div>
+          <div class="polaroid">
+            <div class="polaroid-img">
+              <p class="polaroid-caption">Y las proximas que vienen 💕</p>
+            </div>
+          </div>
+          <p class="galeria-more script-font">Nos faltan mil fotos más por tomarnos 📸✨</p>
+        </div>
+    </section>
+
+    <!-- ---- SECCIÓN 4: LA PROPUESTA ---- -->
+    <section id="propuesta" class="section section-propuesta">
+      <div class="container">
+        <div class="propuesta-box">
+          <h2 class="propuesta-title script-font">La gran pregunta...</h2>
+          <p class="propuesta-question">¿Quieres ser mi novia? </p>
+          <div class="propuesta-buttons" id="propuesta-buttons">
+            <button id="btn-si" class="btn btn-si" aria-label="Sí, quiero">
+              SÍ ❤️
+            </button>
+            <button id="btn-no" class="btn btn-no" aria-label="No">
+              NO 💔
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ---- ÉXITO ---- -->
+    <section id="exito" class="section section-exito hidden">
+      <div class="container exito-content">
+        <h2 class="exito-title script-font">¡Espero que te haya gustado!</h2>
+        <p class="exito-text">Este es solo el comienzo de nuestra historia juntos.</p>
+        <div class="exito-heart">💖</div>
+        <p class="exito-footer script-font">Te quiero</p>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ============ CONTROL DE MÚSICA ============ -->
+  <button id="music-toggle" class="music-toggle" aria-label="Activar/Desactivar música" title="Música">
+    🎵
+  </button>
+  <audio id="bg-music" loop preload="auto">
+    <source src="assets/music/background.mp3" type="audio/mpeg" />
+  </audio>
+
+  <!-- Script -->
+  <script src="js/script.js"></script>
+</body>
+
+</html>
