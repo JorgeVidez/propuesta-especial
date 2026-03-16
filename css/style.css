@@ -791,3 +791,74 @@ body::before {
 ::-webkit-scrollbar-thumb:hover {
   background: rgba(192, 57, 94, 0.5);
 }
+
+/* =============================================
+   NOTIFICACIÓN DE MÚSICA (TOAST)
+   ============================================= */
+.music-tip {
+  position: fixed;
+  bottom: 90px;
+  right: 24px;
+  z-index: 2000;
+  transform: translateX(120%);
+  transition: transform 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.music-tip.visible {
+  transform: translateX(0);
+}
+
+.music-tip-content {
+  background: rgba(255, 255, 255, 0.9);
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
+  border: 1px solid rgba(255, 200, 210, 0.5);
+  padding: 16px 24px;
+  border-radius: 20px;
+  box-shadow: 0 10px 30px rgba(184, 58, 94, 0.2);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  max-width: 280px;
+  text-align: center;
+}
+
+.music-tip-content span {
+  font-size: 0.95rem;
+  color: #8c5070;
+  font-weight: 400;
+}
+
+#btn-play-now {
+  background: linear-gradient(135deg, #ff6b8a, #ff9a9e);
+  color: white;
+  border: none;
+  padding: 8px 18px;
+  border-radius: 50px;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 600;
+  font-size: 0.85rem;
+  cursor: pointer;
+  transition: transform 0.3s, box-shadow 0.3s;
+  box-shadow: 0 4px 12px rgba(255, 107, 138, 0.3);
+}
+
+#btn-play-now:hover {
+  transform: scale(1.05);
+  box-shadow: 0 6px 16px rgba(255, 107, 138, 0.4);
+}
+
+@media (max-width: 768px) {
+  .music-tip {
+    right: 50%;
+    transform: translate(50%, 150%);
+    bottom: 80px;
+    width: 90%;
+    max-width: 320px;
+  }
+  
+  .music-tip.visible {
+    transform: translate(50%, 0);
+  }
+}
