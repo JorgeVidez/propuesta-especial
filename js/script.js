@@ -45,12 +45,7 @@ document.addEventListener('DOMContentLoaded', () => {
     introScreen.classList.add('fade-out');
     mainContent.classList.remove('hidden');
 
-    // Intentar reproducir música
-    bgMusic.play().then(() => {
-      musicToggle.classList.add('playing');
-    }).catch(() => {
-      // Auto-play bloqueado por el navegador; usuario puede activar manualmente
-    });
+    // La música ya no empieza automáticamente 
 
     // Iniciar observadores después de mostrar contenido
     setTimeout(() => {
@@ -141,6 +136,54 @@ document.addEventListener('DOMContentLoaded', () => {
       }, { ...observerOptions, threshold: 0.2 });
       propuestaObserver.observe(propuestaBox);
     }
+
+    // --- Music Tip (Cine Section) ---
+    const cineSection = document.getElementById('cine');
+    if (cineSection) {
+      const musicTipObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting && !isPlaying) {
+            showMusicTip();
+            musicTipObserver.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.3 });
+      musicTipObserver.observe(cineSection);
+    }
+  }
+
+  function showMusicTip() {
+    const tip = document.createElement('div');
+    tip.className = 'music-tip';
+    tip.innerHTML = `
+      <div class="music-tip-content">
+        <span>Mira esta sección con música... 🎵</span>
+        <button id="btn-play-now">Dale play aquí ✨</button>
+      </div>
+    `;
+    document.body.appendChild(tip);
+
+    // Animación de entrada
+    setTimeout(() => tip.classList.add('visible'), 100);
+
+    const btnPlayNow = tip.querySelector('#btn-play-now');
+    btnPlayNow.addEventListener('click', () => {
+      bgMusic.play().then(() => {
+        isPlaying = true;
+        musicToggle.classList.add('playing');
+        musicToggle.textContent = '🎵';
+        tip.classList.remove('visible');
+        setTimeout(() => tip.remove(), 500);
+      });
+    });
+
+    // Auto-cerrar después de 8 segundos si no hacen nada
+    setTimeout(() => {
+      if (tip.parentNode) {
+        tip.classList.remove('visible');
+        setTimeout(() => tip.remove(), 500);
+      }
+    }, 8000);
   }
 
   // =============================================
